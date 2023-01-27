@@ -1,7 +1,7 @@
 
 // Require http module
 
-const http = require('node:http');
+const http = require('http');
 const hostname = '127.0.0.1';
 const port = 3000;
 const server = http.createServer((req, res) => {
@@ -13,26 +13,28 @@ server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 
-// this console.log is where the important bits of your server code(the last two functions) are going to go
-
 // Require fs module (read in ./public/index.html and put that inside res.end instead of Hello World).
+const fs = require('fs');
 
-// possible code from class example
-// Other possible code below
-const fs = require('fs').promises;
-
-async function readFile(filePath) {
-  try {
-    const data = await fs.readFile(filePath);
-    console.log(data.toString());
-  } catch (error) {
-    console.error(`Got an error trying to read the file: ${error.message}`);
+fs.readFile('./public/index.html', 'utf8', (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
   }
-}
-
-readFile('/Users/michelletemple/workspace/a01-mtemple317/public/index.html');
+  console.log(data);
+});
 
 // Require minimist module (make sure you install this one via npm).
+
+const minimist = require('minimist');
+
+let args = minimist(process.argv.slice(2), {
+    default: {
+        port: 3000
+    },
+});
+
+console.log ('args:',args); 
 
 // Use minimist to process one argument `--port=` on the command line after `node server.js`.
 
