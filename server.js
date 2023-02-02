@@ -12,8 +12,8 @@ console.log ('args:',args);
 // Require http module
 
 const http = require('http');
-const hostname = args.hostname|| '127.0.0.1';
-const port = args.port || 3000;
+const hostname = '127.0.0.1';
+const port = 3000;
 const fs = require('fs')
 fs.readFile('./public/index.html', 'utf8', (err, data) => {
    if (err) {
