@@ -3,10 +3,10 @@
 const minimist = require('minimist');
 
 const args = minimist(process.argv.slice(2))
- console.log("command line arguments: ")
- console.log(args)
- console.log("what is in args port?: ")
- console.log(args.port)
+// console.log("command line arguments: ")
+// console.log(args)
+// console.log("what is in args port?: ")
+// console.log(args.port)
 console.log ('args:',args); 
 
 // Require http module
@@ -33,8 +33,6 @@ server.listen(port, hostname, () => {
 });
 
 // Require fs module (read in ./public/index.html and put that inside res.end instead of Hello World).
-
-
 
 
 // Use minimist to process one argument `--port=` on the command line after `node server.js`.
